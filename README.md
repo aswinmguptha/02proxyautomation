@@ -1,4 +1,5 @@
 # Installation
 
-<li> Clone the repo
-<li> Run `install.sh` file
+Clone the repo
+
+Run the ``install.sh`` file
