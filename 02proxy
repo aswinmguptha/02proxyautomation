@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Configure with your ip range and 02proxy
+
+ip="$10.30."
+proxy='Acquire::http::Proxy "http://10.30.10.45:3142";'
+cmd=$(ip address | grep "inet "  | cut -d" " -f6 | grep -E $ip)
+
+if [ $? -eq 0 ]
+then
+	`echo $proxy > /etc/apt/apt.conf.d/02proxy`
+else
+	`rm /etc/apt/apt.conf.d/02proxy &> /dev/null`
+fi
