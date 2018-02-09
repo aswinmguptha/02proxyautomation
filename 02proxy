@@ -8,7 +8,8 @@ cmd=$(ip address | grep "inet "  | cut -d" " -f6 | grep -E $ip)
 
 if [ $? -eq 0 ]
 then
-	`echo $proxy > /etc/apt/apt.conf.d/02proxy`
+	`echo $proxy | sudo tee /etc/apt/apt.conf.d/02proxy > /dev/null;` 
+	`sudo chmod 755 /etc/apt/apt.conf.d/02proxy;`
 else
-	`rm /etc/apt/apt.conf.d/02proxy &> /dev/null`
+	`sudo rm /etc/apt/apt.conf.d/02proxy &> /dev/null`
 fi
